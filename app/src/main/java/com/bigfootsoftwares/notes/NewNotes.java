@@ -1,7 +1,5 @@
 package com.bigfootsoftwares.notes;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -94,20 +92,8 @@ public class NewNotes extends ActionBarActivity {
         int id = item.getItemId();
         if (id == R.id.about)
         {
-            AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
-            View localView = getLayoutInflater().inflate(R.layout.aboutus, null);
-            TextView localTextView1 = (TextView)localView.findViewById(R.id.title);
-            Typeface localTypeface = Typeface.createFromAsset(getAssets(), "Roboto-Thin.ttf");
-            localTextView1.setTypeface(localTypeface);
-            TextView localTextView2 = (TextView)localView.findViewById(R.id.content);
-            localTextView2.setTypeface(localTypeface);
-            localBuilder.setView(localView).setPositiveButton(R.string.dialog_ok_button, new DialogInterface.OnClickListener()
-            {
-                public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-                {
-                }
-            });
-            localBuilder.show();
+            AboutUsDialog mDialog = new AboutUsDialog(this, getLayoutInflater());
+            mDialog.show();
             return true;
         }
         return super.onOptionsItemSelected(item);
